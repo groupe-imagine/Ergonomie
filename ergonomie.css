@@ -1,0 +1,57 @@
+/* FILEPATH: /home/suva/Epitech-01PGE23-24/06.12.24 nuit de l'info/ergonomie.css */
+
+body {
+    background-color: white;
+}
+
+.input-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.input-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    padding: 5px;
+    font-size: 16px;
+    width: 100px;
+    margin-right: 5px;
+    position: absolute;
+}
+
+.submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.month {
+    color: blue;
+}
+
+.day {
+    color: green;
+}
+
+.year {
+    color: red;
+}
+
+.month-input {
+    border-color: blue;
+}
+
+.day-input {
+    border-color: green;
+}
+
+.year-input {
+    border-color: red;
+}
