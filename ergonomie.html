@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DVD</title>
+    <link rel="stylesheet" href="ergonomie.css">
+</head>
+<body>
+    <div class="input-container">
+        <label class="input-label">Need some help! Can you enter today's date 
+            with <span class="month">month</span>, <span class="day">day</span>
+            , and <span class="year">year</span> (ex: 12 06 2024):</label>
+        <input type="number" class="input-field month-input" id="month-input" 
+        placeholder="Month" min="1" max="12" onkeydown="return false">
+        <input type="number" class="input-field day-input" id="day-input" 
+        placeholder="Day" min="1" max="31" onkeydown="return false">
+        <input type="number" class="input-field year-input" id="year-input" 
+        placeholder="Year" min="1900" max="9999" onkeydown="return false">
+        <button class="submit-button" onclick="submit_date()">Submit</button>
+    </div>
+    
+    <script>
+
+        function move_box(input_box)
+        {
+            var x_rand;
+            var y_rand;
+
+            x_rand = Math.floor(Math.random() * (window.innerWidth -
+            input_box.offsetWidth));
+            y_rand = Math.floor(Math.random() * (window.innerHeight -
+            input_box.offsetHeight));
+            input_box.style.left = x_rand + 'px';
+            input_box.style.top = y_rand + 'px';
+        }
+
+        setInterval(function()
+        {
+            var input_boxs = document.querySelectorAll('.input-field');
+
+            input_boxs.forEach(function(input_box)
+            {
+                var x_new;
+                var y_new;
+
+                x_new = Math.floor(Math.random() * (window.innerWidth -
+                input_box.offsetWidth));
+                y_new = Math.floor(Math.random() * (window.innerHeight -
+                input_box.offsetHeight));
+                input_box.style.left = x_new + 'px';
+                input_box.style.top = y_new + 'px';
+            });
+        }, 2000);
+
+        function move_input_boxes()
+        {
+            var input_boxs;
+
+            input_boxs = document.querySelectorAll('.input-field');
+            input_boxs.forEach(move_box);
+        }
+
+        function date_equal(date1, date2)
+        {
+            return date1.toDateString() === date2.toDateString();
+        }
+
+        function background_color(color)
+        {
+            document.body.style.backgroundColor = color;
+        }
+
+        function back_to_background_color(delay)
+        {
+            setTimeout(function() {
+                background_color("white");
+            }, delay);
+        }
+
+        function submit_date()
+        {
+            var month_input = document.getElementById("month-input").value;
+            var day_input = document.getElementById("day-input").value;
+            var year_input = document.getElementById("year-input").value;
+            var date_input = month_input + " " + day_input + ", " + year_input;
+            var green_date = new Date("12 06, 2024");
+            var given_date = new Date(date_input);
+
+            if (date_equal(given_date, green_date)) {
+                background_color("green");
+            } else {
+                background_color("red");
+                back_to_background_color(2000);
+            }
+            move_input_boxes();
+        }
+
+        move_input_boxes();
+    </script>
+</body>
+</html>
